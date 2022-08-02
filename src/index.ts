@@ -1,8 +1,7 @@
-import { name } from "./modules/snack"
 
-function sum(a: number, b: number): number {
-    return a + b;
-}
+// 引入样式
+import "./style/index.scss"
+// 引入总体的控制类
+import GameControl from "./modules/GameControl"
+new GameControl()
 
-console.log(sum(11, 22));
-console.log(name);

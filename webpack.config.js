@@ -16,7 +16,12 @@ module.exports = {
         //指定打包文件的目录
         path: path.resolve(__dirname, 'dist'),
         //打包后文件的名字
-        filename: "bundle.js"
+        filename: "bundle.js",
+        // 告诉不使用箭头函数
+        environment: {
+            arrowFunction: false,
+            const: false
+        }
     },
     //指定webpack打包时使用的模块
     module: {
@@ -44,6 +49,20 @@ module.exports = {
                 ],
                 //要排除的文件
                 exclude: /node_modules/
+            },
+            // 打包SCSS规则
+            {
+                test: /\.scss$/,
+                use: [{
+                    // 将 JS 字符串生成为 style 节点
+                    loader: "style-loader"
+                }, {
+                    // 将 CSS 转化成 CommonJS 模块
+                    loader: "css-loader"
+                }, {
+                    // 将 Sass 编译成 CSS
+                    loader: "sass-loader"
+                }]
             }
         ]
     },
